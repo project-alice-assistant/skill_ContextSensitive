@@ -1,0 +1,22 @@
+name: Python package
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Lint with flake8
+      run: |
+        version=$(jq .version *.install)
+        aliceMinVersion==$(jq .aliceMinVersion *.install)
+        git_refs_url=$(jq .repository.git_refs_url $GITHUB_EVENT_PATH | tr -d '"' | sed 's/{\/sha}//g')
+        curl -s -X POST $git_refs_url \
+        -H "Authorization: token $GITHUB_TOKEN" \
+        -d @- << EOF
+        {"ref": "refs/tags/$version>=$aliceMinVersion",
+        "sha": "$GITHUB_SHA"}
+        EOF
