@@ -18,6 +18,8 @@ jobs:
         curl -s -X POST $git_refs_url \
         -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
         -d @- << EOF
-        {"ref": "refs/tags/$version>=$aliceMinVersion",
-        "sha": "${{ github.sha }}"}
+        {
+          "ref": "refs/tags/'$version>=$aliceMinVersion'",
+          "sha": "${{ github.sha }}"
+        }
         EOF
