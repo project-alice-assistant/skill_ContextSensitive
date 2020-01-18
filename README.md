@@ -1,5 +1,7 @@
 # ContextSensitive
 
+[![Continous Integration](https://gitlab.com/project-alice-assistant/skills/skill_ContextSensitive/badges/master/pipeline.svg)](https://gitlab.com/project-alice-assistant/skills/skill_ContextSensitive/pipelines/latest)
+
 ### Download
 
 ##### > WGET method
