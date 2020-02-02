@@ -58,7 +58,7 @@ class ContextSensitive(AliceSkill):
 
 			self._history.append(session)
 		except Exception as e:
-			self.log.error('Error adding to intent history: {e}')
+			self.logError('Error adding to intent history: {e}')
 		return True
 
 

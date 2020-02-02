@@ -13,7 +13,7 @@ wget http://skills.projectalice.ch/ContextSensitive \
 ### Description
 ContextSensitive is the official context sensitive skill. It handle intents like "Delete this", "Forget about that"
 
-- Version: 1.0.13
+- Version: 1.0.14
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
