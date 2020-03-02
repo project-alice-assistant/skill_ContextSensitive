@@ -1,0 +1,78 @@
+{
+	"skill": "ContextSensitive",
+	"icon": "restart",
+	"description": "Fornisce comandi per dialoghi relativi al contesto",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DeleteThis",
+			"description": "Questo è usato per far dimenticare un comando, all'interno di un contesto sensibile",
+			"enabledByDefault": true,
+			"utterances": [
+				"per favore, questo non ricordarlo",
+				"questo non ricordarlo, per favore",
+				"cancella questo, per favore",
+				"per favore rimuovi questo",
+				"per favore, non ricordarlo più",
+				"dimenticati di questo, per favore",
+				"dimenticalo per favore",
+				"cancella per favore",
+				"per favore cancella questo",
+				"per piacere dimenticati di questo",
+				"per favore dimenticalo",
+				"non ricordarlo più",
+				"non ricordarlo",
+				"cancellalo",
+				"dimenticatene"
+			],
+			"slots": []
+		},
+		{
+			"name": "RepeatThis",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"che hai detto",
+				"cosa hai detto",
+				"scusa che hai detto",
+				"non ho sentito, scusa",
+				"scusa cosa hai appena detto",
+				"potresti ripeterlo",
+				"mi dispiace non ho sentito",
+				"non ho sentito",
+				"ripeti",
+				"per favore ripeti",
+				"ripeti per piacere",
+				"potresti ripetere quello che hai appena detto",
+				"puoi ripetere quello che hai detto",
+				"dillo di nuovo, per favore",
+				"per cortesia dillo di nuovo",
+				"dillo ancora",
+				"ridillo",
+				"ripeti quello che hai appena detto",
+				"per piacere ripeti quello che hai appena detto",
+				"puoi ripetere per favore",
+				"potresti ripetere",
+				"ripeti per piacere"
+			],
+			"slots": []
+		},
+		{
+			"name": "EditThis",
+			"description": "",
+			"enabledByDefault": true,
+			"utterances": [
+				"per favore modifica questo",
+				"cambia questo per favore",
+				"puoi modificare questo",
+				"possiamo cambiarlo",
+				"per favore sostituiscilo",
+				"questo deve essere cambiato",
+				"cambialo",
+				"modificalo per favore",
+				"devi cambiare questo"
+			],
+			"slots": []
+		}
+	]
+}
