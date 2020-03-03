@@ -2,6 +2,7 @@
 	"name": "ContextSensitive",
 	"version": "1.0.16",
 	"icon": "fab fa-battle-net",
+	"category": "undefined",
 	"author": "ProjectAlice",
 	"maintainers": [
 		"Psycho",
