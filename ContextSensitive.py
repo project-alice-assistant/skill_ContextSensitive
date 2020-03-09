@@ -3,6 +3,7 @@ from typing import Deque, Dict
 
 from core.base.model.Intent import Intent
 from core.base.model.AliceSkill import AliceSkill
+from core.commons import constants
 from core.dialog.model.DialogSession import DialogSession
 from core.util.Decorators import IntentHandler
 
@@ -18,24 +19,12 @@ class ContextSensitive(AliceSkill):
 
 	@IntentHandler('DeleteThis', isProtected=True)
 	def deleteThisIntent(self, session: DialogSession):
-		for skill in self.SkillManager.activeSkills.values():
-			try:
-				if skill['instance'].onContextSensitiveDelete(session.sessionId):
-					self.endSession(sessionId=session.sessionId)
-					return
-			except Exception:
-				continue
+		self.broadcast(method=constants.EVENT_CONTEXT_SENSITIVE_DELETE, exceptions=[self.name], propagateToSkills=True, session=session)
 
 
 	@IntentHandler('EditThis', isProtected=True)
 	def editThisIntent(self, session: DialogSession):
-		for skill in self.SkillManager.activeSkills.values():
-			try:
-				if skill['instance'].onContextSensitiveEdit(session.sessionId):
-					self.endSession(sessionId=session.sessionId)
-					return
-			except:
-				continue
+		self.broadcast(method=constants.EVENT_CONTEXT_SENSITIVE_EDIT, exceptions=[self.name], propagateToSkills=True, session=session)
 
 
 	@IntentHandler('RepeatThis', isProtected=True)
@@ -44,26 +33,28 @@ class ContextSensitive(AliceSkill):
 
 
 	def addToMessageHistory(self, session: DialogSession) -> bool:
-		if session.message.topic in self.supportedIntents or session.message.topic == self._INTENT_ANSWER_YES_OR_NO or 'intent' not in session.message.topic:
+		if session.message.topic in self.supportedIntents or session.intentName == str(self._INTENT_ANSWER_YES_OR_NO) or 'intent' not in session.intentName:
 			return False
 
 		try:
 			customData = session.customData
 
-			if 'speaker' not in customData:
-				customData['speaker'] = session.user
+			if 'user' not in customData:
+				customData['user'] = session.user
 				data = session.payload
 				data['customData'] = customData
 				session.payload = data
 
 			self._history.append(session)
+
+			return True
 		except Exception as e:
-			self.logError('Error adding to intent history: {e}')
-		return True
+			self.logError(f'Error adding to intent history: {e}')
+			return False
 
 
-	def lastMessage(self) -> str:
-		return self._history[-1] if self._history else None
+	def lastSession(self) -> DialogSession:
+		return self._history[-1]
 
 
 	def addChat(self, text: str, siteId: str):

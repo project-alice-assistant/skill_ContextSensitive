@@ -5,7 +5,7 @@
 ### Description
 ContextSensitive is the official context sensitive skill. It handle intents like "Delete this", "Forget about that"
 
-- Version: 1.0.16
+- Version: 1.0.17
 - Author: ProjectAlice
 - Maintainers:
   - Psycho, Jierka, maxbachmann
