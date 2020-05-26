@@ -32,30 +32,38 @@
 			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
-				"what did you say",
-				"what did you just say",
-				"sorry what did you say",
+				"what did {you:=>Pronoun} say",
+				"what did {you:=>Pronoun} just say",
+				"sorry what did {you:=>Pronoun} say",
 				"i did not hear sorry",
-				"sorry what did you just say",
-				"could you say it again",
-				"sorry I did not hear it",
+				"sorry what did {you:=>Pronoun} just say",
+				"could you say {it:=>Pronoun} again",
+				"sorry I did not hear {it:=>Pronoun}",
 				"i did not hear that",
 				"repeat this",
 				"please repeat that",
 				"repeat that please",
-				"could you repeat what you just said",
-				"can you please repeat what you just said",
-				"say it again please",
-				"please say it again",
-				"say it again",
+				"could you repeat what {you:=>Pronoun} just said",
+				"can you please repeat what {you:=>Pronoun} just said",
+				"say {it:=>Pronoun} again please",
+				"please say {it:=>Pronoun} again",
+				"say {it:=>Pronoun} again",
 				"say again",
-				"repeat what you just said",
-				"please repeat what you just said",
+				"repeat what {you:=>Pronoun} just said",
+				"please repeat what {you:=>Pronoun} just said",
 				"can you please repeat",
 				"could you please repeat",
 				"can you repeat please"
 			],
-			"slots": []
+			"slots": [
+				{
+					"name": "Pronoun",
+					"description": null,
+					"required": false,
+					"type": "Alice/PersonalPronoun",
+					"missingQuestion": ""
+				}
+			]
 		},
 		{
 			"name": "EditThis",
