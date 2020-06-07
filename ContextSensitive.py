@@ -72,7 +72,7 @@ class ContextSensitive(AliceSkill):
 
 
 	def addUserChat(self, text: str, siteId: str):
-		if siteId not in self._sayHistory:
+		if siteId not in self._userSayHistory:
 			self._userSayHistory[siteId] = deque(list(), 10)
 
 		self._userSayHistory[siteId].append(text)
