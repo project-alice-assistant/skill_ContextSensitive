@@ -64,7 +64,12 @@ class ContextSensitive(AliceSkill):
 		return self._history[-1]
 
 
-	def addChat(self, text: str, siteId: str):
+	def addAliceChat(self, text: str, siteId: str):
+		"""
+		Saves what Alice says/speaks
+		:param text: The text spoken
+		:param siteId: Where it was spoken
+		"""
 		if siteId not in self._sayHistory:
 			self._sayHistory[siteId] = deque(list(), 10)
 
@@ -72,6 +77,11 @@ class ContextSensitive(AliceSkill):
 
 
 	def addUserChat(self, text: str, siteId: str):
+		"""
+		Saves what a user says/asks
+		:param text: The text that was captured
+		:param siteId: Where it was captured
+		"""
 		if siteId not in self._userSayHistory:
 			self._userSayHistory[siteId] = deque(list(), 10)
 
