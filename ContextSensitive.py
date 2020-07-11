@@ -1,4 +1,5 @@
 from collections import deque
+from pathlib import Path
 from typing import Deque, Dict
 
 from core.base.model.Intent import Intent
@@ -15,6 +16,7 @@ class ContextSensitive(AliceSkill):
 		self._history: Deque = deque(list(), 10)
 		self._sayHistory: Dict[str, Deque] = dict()
 		self._userSayHistory: Dict[str, Deque] = dict()
+		self._userSpeech = Path(self.Commons.rootDir(), 'var/cache/userLastSpeech.wav')
 		super().__init__()
 
 
@@ -34,7 +36,11 @@ class ContextSensitive(AliceSkill):
 			if session.slotValue('Pronoun') == 'you':
 				self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 			else:
-				self.endDialog(session.sessionId, text=self.getLastUserChat(siteId=session.siteId))
+				if self.ConfigManager.getAliceConfigByName('recordAudioAfterWakeword') and self._userSpeech:
+					self.playSound(self._userSpeech.stem, location=Path('var/cache'), siteId=session.siteId)
+					self.endSession(sessionId=session.sessionId)
+				else:
+					self.endDialog(session.sessionId, text=self.getLastUserChat(siteId=session.siteId))
 		else:
 			self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 
