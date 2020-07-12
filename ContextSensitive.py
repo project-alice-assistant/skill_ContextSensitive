@@ -16,7 +16,7 @@ class ContextSensitive(AliceSkill):
 		self._history: Deque = deque(list(), 10)
 		self._sayHistory: Dict[str, Deque] = dict()
 		self._userSayHistory: Dict[str, Deque] = dict()
-		self._userSpeech = Path(self.Commons.rootDir(), 'var/cache/userLastSpeech.wav')
+		self._userSpeech = Path(self.Commons.rootDir(), 'var/cache/secondLastUserSpeech.wav')
 		super().__init__()
 
 
@@ -36,8 +36,8 @@ class ContextSensitive(AliceSkill):
 			if session.slotValue('Pronoun') == 'you':
 				self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
 			else:
-				if self.ConfigManager.getAliceConfigByName('recordAudioAfterWakeword') and self._userSpeech:
-					self.playSound(self._userSpeech.stem, location=Path('var/cache'), siteId=session.siteId)
+				if self.ConfigManager.getAliceConfigByName('recordAudioAfterWakeword') and self._userSpeech.exists():
+					self.playSound(self._userSpeech.stem, location=self._userSpeech.parent, siteId=session.siteId)
 					self.endSession(sessionId=session.sessionId)
 				else:
 					self.endDialog(session.sessionId, text=self.getLastUserChat(siteId=session.siteId))
