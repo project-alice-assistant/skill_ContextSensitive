@@ -1,12 +1,9 @@
 {
 	"skill": "ContextSensitive",
-	"icon": "restart",
-	"description": "Fornisce comandi per dialoghi relativi al contesto",
 	"slotTypes": [],
 	"intents": [
 		{
 			"name": "DeleteThis",
-			"description": "Questo è usato per far dimenticare un comando, all'interno di un contesto sensibile",
 			"enabledByDefault": true,
 			"utterances": [
 				"per favore, questo non ricordarlo",
@@ -29,7 +26,6 @@
 		},
 		{
 			"name": "RepeatThis",
-			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
 				"che hai detto",
@@ -58,7 +54,6 @@
 		},
 		{
 			"name": "EditThis",
-			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
 				"per favore modifica questo",

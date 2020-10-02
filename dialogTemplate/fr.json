@@ -1,12 +1,9 @@
 {
 	"skill": "ContextSensitive",
-	"icon": "restart",
-	"description": "Fourni des commandes pour gérer le contexte au sein d'une discussion",
 	"slotTypes": [],
 	"intents": [
 		{
 			"name": "DeleteThis",
-			"description": "Fait en sorte de supprimer une entrée que l'assistant a gardé dans son historique",
 			"enabledByDefault": true,
 			"utterances": [
 				"enlève ça s'il te plaît",
@@ -28,7 +25,6 @@
 		},
 		{
 			"name": "RepeatThis",
-			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
 				"qu'as-tu dis",
@@ -58,7 +54,6 @@
 		},
 		{
 			"name": "EditThis",
-			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
 				"modifie ça",

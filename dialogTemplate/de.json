@@ -1,12 +1,9 @@
 {
 	"skill": "ContextSensitive",
-	"icon": "restart",
-	"description": "Provides commands for context sensitive dialog",
 	"slotTypes": [],
 	"intents": [
 		{
 			"name": "DeleteThis",
-			"description": "In a context sensitive dialog, this is used to make the assistant forget something that it has stored",
 			"enabledByDefault": true,
 			"utterances": [
 				"Bitte erinnere dich nicht daran",
@@ -29,7 +26,6 @@
 		},
 		{
 			"name": "RepeatThis",
-			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
 				"Was hast du gesagt",
@@ -59,7 +55,6 @@
 		},
 		{
 			"name": "EditThis",
-			"description": "",
 			"enabledByDefault": true,
 			"utterances": [
 				"Bitte bearbeite das",
