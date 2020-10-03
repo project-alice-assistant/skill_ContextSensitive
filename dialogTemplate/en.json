@@ -54,7 +54,6 @@
 			"slots": [
 				{
 					"name": "Pronoun",
-					"description": null,
 					"required": false,
 					"type": "Alice/PersonalPronoun",
 					"missingQuestion": ""
