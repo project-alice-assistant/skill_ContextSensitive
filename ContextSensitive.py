@@ -10,7 +10,7 @@ from core.util.Decorators import IntentHandler
 
 
 class ContextSensitive(AliceSkill):
-	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo', isProtected=True)
+	_INTENT_ANSWER_YES_OR_NO = Intent('AnswerYesOrNo')
 
 	def __init__(self):
 		self._history: Deque = deque(list(), 10)
@@ -19,17 +19,17 @@ class ContextSensitive(AliceSkill):
 		super().__init__()
 
 
-	@IntentHandler('DeleteThis', isProtected=True)
+	@IntentHandler('DeleteThis')
 	def deleteThisIntent(self, session: DialogSession):
 		self.broadcast(method=constants.EVENT_CONTEXT_SENSITIVE_DELETE, exceptions=[self.name], propagateToSkills=True, session=session)
 
 
-	@IntentHandler('EditThis', isProtected=True)
+	@IntentHandler('EditThis')
 	def editThisIntent(self, session: DialogSession):
 		self.broadcast(method=constants.EVENT_CONTEXT_SENSITIVE_EDIT, exceptions=[self.name], propagateToSkills=True, session=session)
 
 
-	@IntentHandler('RepeatThis', isProtected=True)
+	@IntentHandler('RepeatThis')
 	def repeatThisIntent(self, session: DialogSession):
 		if 'Pronoun' in session.slots:
 			if session.slotValue('Pronoun') == 'you':
