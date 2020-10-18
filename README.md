@@ -14,3 +14,4 @@ ContextSensitive is the official context sensitive skill. It handle intents like
   - fr
   - de
   - it
+  - pl
