@@ -7,10 +7,11 @@ ContextSensitive is the official context sensitive skill. It handle intents like
 
 - Author: ProjectAlice
 - Maintainers:
-  - Psycho, Jierka, maxbachmann
+  - Psycho, Jierka, maxbachmann, ChrisB85
 - Alice minimum Version: 1.0.0-a6
 - Languages:
   - en
   - fr
   - de
   - it
+  - pl

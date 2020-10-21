@@ -1,0 +1,13 @@
+{
+	"nothing": [
+		"Przepraszam, ale nic nie mówiłem",
+		"Nic nie mówiłem, przepraszam",
+		"Ja nic nie mówiłem"
+	],
+	"didntUnderstand": [
+		"Przepraszam, ale nie wiem o czym mówisz",
+		"Przepraszam, nie zrozumiałem",
+		"Wybacz, nie rozumiem",
+		"Nie rozumiem, przepraszam"
+	]
+}

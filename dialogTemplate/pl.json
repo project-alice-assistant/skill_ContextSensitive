@@ -1,0 +1,97 @@
+{
+	"skill": "ContextSensitive",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DeleteThis",
+			"enabledByDefault": true,
+			"utterances": [
+				"nie zapamiętuj tego",
+				"proszę nie zapamiętuj tego",
+				"usuń to",
+				"skasuj to",
+				"nie pamiętaj tego więcej",
+				"zapomnij o tym",
+				"zapomnij o tym proszę",
+				"usuń to proszę",
+				"proszę skasuj to",
+				"proszę usuń to",
+				"zapomnij że to było",
+				"nie pamiętaj o tym",
+				"proszę nie pamiętaj o tym",
+				"nie używaj tego",
+				"nie używaj tego więcej"
+			],
+			"slots": []
+		},
+		{
+			"name": "RepeatThis",
+			"enabledByDefault": true,
+			"utterances": [
+				"coś {you:=>Pronoun} powiedział",
+				"co żeś {you:=>Pronoun} powiedział",
+				"przepraszam co powiedziałeś",
+				"co powiedziałeś",
+				"nie usłyszałem co powiedziałeś",
+				"nie usłyszałam co powiedziałeś",
+				"powtórz co powiedziałeś",
+				"przepraszam możesz powtórzyć",
+				"możesz {it:=>Pronoun} powtórzyć",
+				"powtórz {it:=>Pronoun}",
+				"nie słyszałem co powiedziałeś",
+				"nie słyszałam co powiedziałeś",
+				"nie słyszałem co mówiłeś",
+				"nie słyszałam co mówiłeś",
+				"powtórz {it:=>Pronoun} jeszcze raz",
+				"powiedz {it:=>Pronoun} jeszcze raz",
+				"powiedz co mowiłeś",
+				"wyartykułuj {it:=>Pronoun} jeszcze raz",
+				"mów {it:=>Pronoun} jeszcze raz",
+				"mów ponownie",
+				"powtórz",
+				"przepraszam nie słyszałem co powiedziałeś",
+				"przepraszam nie słyszałam co powiedziałeś"
+			],
+			"slots": [
+				{
+					"name": "Pronoun",
+					"required": false,
+					"type": "Alice/PersonalPronoun",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "EditThis",
+			"enabledByDefault": true,
+			"utterances": [
+				"edytuj to",
+				"edytuj to proszę",
+				"zedytuj to proszę",
+				"proszę edytuj to proszę",
+				"czy możesz to zmienić",
+				"czy możesz to zmienić proszę",
+				"zmień to",
+				"proszę zmień to",
+				"zmień to proszę",
+				"proszę zamień to",
+				"proszę zamień to proszę",
+				"to musi być zmienione",
+				"zamień to",
+				"to trzeba zmienić",
+				"chcę abyś to zmienił",
+				"chcę żebyś to zmienił",
+				"to nie może tak być",
+				"to nie może być tak",
+				"chcę to zmienić",
+				"chcę to zazmienić",
+				"rozkazuję ci to zmienić",
+				"nakazuję ci to zmienić",
+				"to nie jest tak jak poiwinno",
+				"to nie jest tak jak poiwinno być",
+				"to nie jest tak jak ma być"
+			],
+			"slots": []
+		}
+	]
+}
