@@ -33,7 +33,7 @@ class ContextSensitive(AliceSkill):
 	def repeatThisIntent(self, session: DialogSession):
 		if 'Pronoun' in session.slots:
 			if session.slotValue('Pronoun') == 'you':
-				self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.deviceUid))
+				self.endDialog(session.sessionId, text=self.getLastChat(deviceUid=session.deviceUid))
 			else:
 				if self.ConfigManager.getAliceConfigByName('recordAudioAfterWakeword'):
 					file = Path(self.AudioServer.SECOND_LAST_USER_SPEECH.format(session.user, session.deviceUid))
@@ -73,16 +73,16 @@ class ContextSensitive(AliceSkill):
 		return self._history[-1]
 
 
-	def addAliceChat(self, text: str, siteId: str):
+	def addAliceChat(self, text: str, deviceUid: str):
 		"""
 		Saves what Alice says/speaks
 		:param text: The text spoken
-		:param siteId: Where it was spoken
+		:param deviceUid: Where it was spoken
 		"""
-		if siteId not in self._sayHistory:
-			self._sayHistory[siteId] = deque(list(), 10)
+		if deviceUid not in self._sayHistory:
+			self._sayHistory[deviceUid] = deque(list(), 10)
 
-		self._sayHistory[siteId].append(text)
+		self._sayHistory[deviceUid].append(text)
 
 
 	def addUserChat(self, text: str, deviceUid: str):
