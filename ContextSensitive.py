@@ -33,19 +33,19 @@ class ContextSensitive(AliceSkill):
 	def repeatThisIntent(self, session: DialogSession):
 		if 'Pronoun' in session.slots:
 			if session.slotValue('Pronoun') == 'you':
-				self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
+				self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.deviceUid))
 			else:
 				if self.ConfigManager.getAliceConfigByName('recordAudioAfterWakeword'):
-					file = Path(self.AudioServer.SECOND_LAST_USER_SPEECH.format(session.user, session.siteId))
+					file = Path(self.AudioServer.SECOND_LAST_USER_SPEECH.format(session.user, session.deviceUid))
 					if not file.exists():
 						return
 
-					self.playSound(file.stem, location=file.parent, siteId=session.siteId)
+					self.playSound(file.stem, location=file.parent, deviceUid=session.deviceUid)
 					self.endSession(sessionId=session.sessionId)
 				else:
-					self.endDialog(session.sessionId, text=self.getLastUserChat(siteId=session.siteId))
+					self.endDialog(session.sessionId, text=self.getLastUserChat(deviceUid=session.deviceUid))
 		else:
-			self.endDialog(session.sessionId, text=self.getLastChat(siteId=session.siteId))
+			self.endDialog(session.sessionId, text=self.getLastChat(deviceUid=session.deviceUid))
 
 
 	def addToMessageHistory(self, session: DialogSession) -> bool:
@@ -85,21 +85,21 @@ class ContextSensitive(AliceSkill):
 		self._sayHistory[siteId].append(text)
 
 
-	def addUserChat(self, text: str, siteId: str):
+	def addUserChat(self, text: str, deviceUid: str):
 		"""
 		Saves what a user says/asks
 		:param text: The text that was captured
-		:param siteId: Where it was captured
+		:param deviceUid: Where it was captured
 		"""
-		if siteId not in self._userSayHistory:
-			self._userSayHistory[siteId] = deque(list(), 10)
+		if deviceUid not in self._userSayHistory:
+			self._userSayHistory[deviceUid] = deque(list(), 10)
 
-		self._userSayHistory[siteId].append(text)
-
-
-	def getLastChat(self, siteId: str) -> str:
-		return self._sayHistory[siteId][-1] if self._sayHistory.get(siteId) else self.randomTalk('nothing')
+		self._userSayHistory[deviceUid].append(text)
 
 
-	def getLastUserChat(self, siteId: str) -> str:
-		return self._userSayHistory[siteId][-2] if self._userSayHistory.get(siteId) else self.randomTalk('nothing')
+	def getLastChat(self, deviceUid: str) -> str:
+		return self._sayHistory[deviceUid][-1] if self._sayHistory.get(deviceUid) else self.randomTalk('nothing')
+
+
+	def getLastUserChat(self, deviceUid: str) -> str:
+		return self._userSayHistory[deviceUid][-2] if self._userSayHistory.get(deviceUid) else self.randomTalk('nothing')
