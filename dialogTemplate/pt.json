@@ -1,0 +1,80 @@
+{
+	"skill": "ContextSensitive",
+	"slotTypes": [],
+	"intents": [
+		{
+			"name": "DeleteThis",
+			"enabledByDefault": true,
+			"utterances": [
+				"please don't remember this",
+				"don't this remember this please",
+				"remove this please",
+				"please remove this",
+				"please don't remember this anymore",
+				"forget about this please",
+				"forget this please",
+				"delete this please",
+				"please delete this",
+				"please forget about this",
+				"please forget this",
+				"don't remember this anymore",
+				"don't remember this",
+				"delete this",
+				"forget about this"
+			],
+			"slots": []
+		},
+		{
+			"name": "RepeatThis",
+			"enabledByDefault": true,
+			"utterances": [
+				"what did {you:=>Pronoun} say",
+				"what did {you:=>Pronoun} just say",
+				"sorry what did {you:=>Pronoun} say",
+				"i did not hear sorry",
+				"sorry what did {you:=>Pronoun} just say",
+				"could you say {it:=>Pronoun} again",
+				"sorry I did not hear {it:=>Pronoun}",
+				"i did not hear that",
+				"repeat this",
+				"please repeat that",
+				"repeat that please",
+				"could you repeat what {you:=>Pronoun} just said",
+				"can you please repeat what {you:=>Pronoun} just said",
+				"say {it:=>Pronoun} again please",
+				"please say {it:=>Pronoun} again",
+				"say {it:=>Pronoun} again",
+				"say again",
+				"repeat what {you:=>Pronoun} just said",
+				"please repeat what {you:=>Pronoun} just said",
+				"can you please repeat",
+				"could you please repeat",
+				"can you repeat please"
+			],
+			"slots": [
+				{
+					"name": "Pronoun",
+					"required": false,
+					"type": "Alice/PersonalPronoun",
+					"missingQuestion": ""
+				}
+			]
+		},
+		{
+			"name": "EditThis",
+			"enabledByDefault": true,
+			"utterances": [
+				"please edit this",
+				"change this please",
+				"can you edit this please",
+				"can we change this",
+				"please replace this",
+				"this needs to be changed",
+				"change that",
+				"please edit that",
+				"i need you to edit this"
+			],
+			"slots": []
+		}
+	]
+}
