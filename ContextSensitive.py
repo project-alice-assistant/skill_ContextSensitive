@@ -16,6 +16,12 @@ class ContextSensitive(AliceSkill):
 		self._history: Deque = deque(list(), 10)
 		self._sayHistory: Dict[str, Deque] = dict()
 		self._userSayHistory: Dict[str, Deque] = dict()
+
+		# Supporting AliceCore premade slots
+		self._lastLocation = ''
+		self._lastName = ''
+		self._lastNumber = ''
+
 		super().__init__()
 
 
@@ -63,6 +69,13 @@ class ContextSensitive(AliceSkill):
 
 			self._history.append(session)
 
+			if 'Alice/Location' in session.slots:
+				self._lastLocation = session.slots.get('Location', '')
+			elif 'snips/number' in session.slots:
+				self._lastNumber = session.slots.get('Number', session.slots.get('Percent', ''))
+			elif 'Alice/Name' in session.slots:
+				self._lastName = session.slots.get('Name', '')
+
 			return True
 		except Exception as e:
 			self.logError(f'Error adding to intent history: {e}')
@@ -103,3 +116,7 @@ class ContextSensitive(AliceSkill):
 
 	def getLastUserChat(self, deviceUid: str) -> str:
 		return self._userSayHistory[deviceUid][-2] if self._userSayHistory.get(deviceUid) else self.randomTalk('nothing')
+
+
+	def getLastLocation(self):
+		return self._lastLocation
